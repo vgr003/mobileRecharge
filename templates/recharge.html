@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge</title>
+</head>
+<body>
+<center>
+    <h1>Recharge</h1>
+    {% if success %}
+        <h1 style="color:green">Recharge Successfull with transaction id {{transaction_id}}</h1>
+    {% else %}
+        {% if error %}
+            <h3 style="color:red">{{error}}</h3>
+        {% endif %}
+        <form action="." method="post">
+                {% csrf_token %}
+
+            <div>
+                <input type="text" name="phone" placeholder="Mobile No." value={{phone}}>
+            </div>
+            <div>
+                <input type="text" name="operator" placeholder="Operator" value={{operator}}>
+            </div>
+            <div>
+                <input type="text" name="plan" placeholder="Plan" value={{plan}}>
+            </div>
+            <input type="submit">
+        </form>
+    {% endif %}
+</center>
+
+
+</body>
+</html>
